@@ -1,0 +1,13 @@
+name: data_contract_experiments
+
+channels:
+  - defaults
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - ipykernel
+  - pandas
+  - scipy
+  - jupyterlab
+  - datacontract-cli
