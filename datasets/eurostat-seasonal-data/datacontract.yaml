@@ -31,14 +31,34 @@ info:
 
 ### models
 
-# models:
-#   my_model:
-#     description:
-#     type:
-#     fields:
-#       my_field:
-#         type:
-#         description:
+models:
+  data: 
+    description: An artifical data set  with 201  price observations for 36 periods and 12 products
+    type: table
+    fields:
+      Period:
+        type: int
+        description: Time period
+        example: '1'
+        primary: true
+      Product:
+        type: int
+        description: The Product name
+        example: 'A'
+        primary: true
+      Turnover:
+        type: float
+        description: The turnover of the data
+        example: '642.49'
+      Quantity:
+        type: float
+        description: The number of products sold
+        example: '88.088'
+      Price:
+        type: float
+        descrption: The unit price of each sold product
+        example: '2.09964'
+
 
 
 ### definitions
