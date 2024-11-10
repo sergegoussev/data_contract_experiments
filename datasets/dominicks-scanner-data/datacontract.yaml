@@ -3,7 +3,7 @@ id: dominicks-scanner-dataset
 info:
   title: Dominicks finer foods scanner dataset
   version: 0.0.1
-  description: This is an example data contract for the Dominick's Finer foods
+  description: A dataset made up of 9 years of transaction (scanner) data for 26 different categories in 100 stores sold by Dominick's finer foods (a now defunct retailer in Chicago in the 90s).
   owner: Chicago Booth School of Business
   contact:
    name: Chicago Booth School of Business
@@ -31,14 +31,74 @@ info:
 
 ### models
 
-# models:
-#   my_model:
-#     description:
-#     type:
-#     fields:
-#       my_field:
-#         type:
-#         description:
+models:
+  movement: 
+    description: The movement (or turnover) data. Schema identical but this is provided separately for each of the 26 categories.
+    type: table
+    fields:
+      STORE:
+        type: int
+        description: Store number (references store data on https://github.com/eurostat/dff/blob/master/CSV/stores.csv)
+        example: '76'
+        primary: true
+      UPC:
+        type: bigint
+        description: Universal Product Code for sold product
+        example: '1192603016'
+        primary: true
+      WEEK:
+        type: int
+        description: Week number representing the sales (references weeks data on https://github.com/eurostat/dff/blob/master/CSV/weeks.csv)
+        example: '306'
+        primary: true
+      MOVE:
+        type: int
+        description: Number of units sold
+        example: '1'
+      QTY:
+        type: int
+        description: Quantity of products sold
+        example: '1'
+      PRICE:
+        type: float
+        descrption: Price a product (i.e. the UPC) was sold for
+        example: '2.99'
+      SALES:
+        type: float
+        description: Derived variable for sales per UPC (SALES = PRICE x MOVE / QTY)
+        example: '2.99'
+  upc:
+    description: List of unique products (tracked by UPC) sold by category
+    type: table
+    fields:
+      UPC:
+        type: bigint
+        description: Universal Product Code for sold product
+        example: '1192603016'
+        primary: true
+      DESCRIP:
+        type: text
+        description: Description of the product (i.e. the UPC)
+        example: 'CAFFEDRINE CAPLETS 1'
+      NITEM:
+        type: bigint
+        description: Item code (attempt at tracking products across multiple UPCs)
+        example: '7342431'
+      COM_CODE:
+        type: int
+        description: Commodity code (Dominick's version of categories). Lower granularity that each category file, hence one file may have more than one COM_CODE
+        example: '953'
+      SIZE:
+        type: bigint
+        description: Size of the product
+        example: '16 CT'
+      # CASE:
+      #   type: int
+      #   description: Number of items in the case
+      #   example: '6'
+
+
+      
 
 
 ### definitions
