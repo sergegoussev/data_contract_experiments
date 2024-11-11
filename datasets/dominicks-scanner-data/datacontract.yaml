@@ -61,7 +61,7 @@ models:
         example: '1'
       PRICE:
         type: float
-        descrption: Price a product (i.e. the UPC) was sold for
+        description: Price a product (i.e. the UPC) was sold for
         example: '2.99'
       SALES:
         type: float

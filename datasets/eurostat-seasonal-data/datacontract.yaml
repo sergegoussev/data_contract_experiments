@@ -56,7 +56,7 @@ models:
         example: '88.088'
       Price:
         type: float
-        descrption: The unit price of each sold product
+        description: The unit price of each sold product
         example: '2.09964'
 
 
