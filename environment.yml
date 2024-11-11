@@ -10,5 +10,7 @@ dependencies:
   - pandas
   - scipy
   - jupyterlab
+  - pip
+  - git
   - pip: 
-    - datacontract-cli[all]
+    - git+git://github.com/sergegoussev/datacontract-cli.git
