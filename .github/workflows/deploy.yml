@@ -33,7 +33,7 @@ jobs:
           pip install git+git://github.com/sergegoussev/datacontract-cli.git
 
       - name: Render
-        uses: datacontract catalog --output ../catalog/
+        uses: actions/datacontract catalog --output ../catalog/
         with:
           target: gh-pages
         env:
