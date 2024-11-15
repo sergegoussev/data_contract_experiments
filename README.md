@@ -6,8 +6,7 @@ Experiments to set up data contracts using [data contract cli](https://cli.datac
 
 ### Add new dataset
 1. Create a new `datacontract.yaml` into the `\datasets` folder
-2. ...
-
+2. **TEMP** navigate into the `\datasets` folder and then using the conda environment specified in `environment.yml`, run `datacontract catalog --output ../catalog/`. this outputs the catalog index.html and the other data contracts into a new `\catalog` folder.
 
 ## Folder structure
 
