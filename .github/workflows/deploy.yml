@@ -28,9 +28,7 @@ jobs:
       - run: echo "Upgraded pip and installed from GitHub"
       - name: create catalog
         working-directory: ./datasets
-        uses: datacontract catalog --output ../catalog/
-        with:
-          target: gh-pages
+        run: datacontract catalog --output ../catalog/
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
