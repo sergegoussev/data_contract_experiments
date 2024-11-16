@@ -26,7 +26,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install datacontract-cli
       - run: echo "Upgraded pip and installed from GitHub"
-      - run: datasets/ datacontract catalog --output ../catalog/
+      - name: create catalog
+        working-directory: ./datasets
+        run: datacontract catalog --output ../catalog/
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
