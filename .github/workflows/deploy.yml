@@ -24,7 +24,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install git+git://github.com/sergegoussev/datacontract-cli.git
+#          # pip install git+git://github.com/sergegoussev/datacontract-cli.git
+          pip install datacontract-cli[all]
       - run: echo "Upgraded pip and installed from GitHub"
       
 
