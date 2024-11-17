@@ -29,7 +29,9 @@ jobs:
       - run: echo "Upgraded pip and installed from GitHub"
       - name: create catalog
         working-directory: ./datasets
-        run: datacontract catalog --output ../catalog/
+        uses: deploy.yaml@v1
+        with:
+          target: gh-pages
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v3
         with:
