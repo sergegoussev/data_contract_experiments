@@ -28,9 +28,7 @@ jobs:
           pip install datacontract-cli
       - run: echo "Upgraded pip and installed from GitHub"
       - name: create catalog
-        uses: owner/repo@ref/.github/workflows/deploy.yaml@v1
-        with:
-          target: gh-pages
+        run: datacontract catalog --output ../docs/
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v3
         with:
