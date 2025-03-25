@@ -1,4 +1,4 @@
-name: buld and deploy data catalog
+name: Buld and deploy data catalog
 
 on:
   workflow_dispatch:
@@ -6,94 +6,33 @@ on:
     branches: ["master"]
     
 jobs:
-  Explore-GitHub-Actions:
+  build-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      # - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v4
-      # - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      # - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      # - name: List files in the repository
-      #   run: |
-      #     ls ${{ github.workspace }}
-      # - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install git+https://github.com/sergegoussev/datacontract-cli.git
-      - run: echo "Upgraded pip and installed from GitHub"
       - name: create catalog
         run: datacontract catalog --output _site/
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v3
-        with:
-          target: gh-pages
+        
+        
+      # - name: Configure GitHub Pages
+      #   uses: actions/configure-pages@v3
+      #   with:
+      #     target: gh-pages
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           target: gh-pages
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "This job's status is ${{ job.status }}."
-      # - run: actions/upload-pages-artifact
-      
-      
-
-# name: Deploy static content 
-
-
-
-# # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-# permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
-
-# jobs:
-#   # Single deploy job since we're just deploying
-#   build-deploy:
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
-
-#       - name: Setup up Python
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version: 3.11
-
-      # - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: List files in the repository
       #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install git+git://github.com/sergegoussev/datacontract-cli.git
-      # # -----------------------
-
-      # - name: Render
-      #   uses: actions/datacontract catalog --output ../catalog/
-      #   with:
-      #     target: gh-pages
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-        
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v5
-        
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     # Upload entire repository
-      #     path: '.'
-          
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v4
+      #     ls ${{ github.workspace }}
+      # - run: echo "This job's status is ${{ job.status }}."
