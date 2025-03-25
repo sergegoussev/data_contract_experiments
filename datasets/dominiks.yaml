@@ -25,7 +25,7 @@ info:
 terms:
  usage: 'Dataset can be used for research and training purposes'
  limitations: 'Dataset must not be republished'
-#  billing:
+ billing: 'None'
 #  noticePeriod:
 
 
