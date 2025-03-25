@@ -18,7 +18,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install git+https://github.com/sergegoussev/datacontract-cli.git
       - name: create catalog
-        run: datacontract catalog --output _site/
+        run: |
+          cd datasets/
+          datacontract catalog --output ../_site/
 
       - name: List files in the repository
         run: |
