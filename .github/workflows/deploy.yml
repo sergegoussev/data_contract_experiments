@@ -19,6 +19,10 @@ jobs:
           pip install git+https://github.com/sergegoussev/datacontract-cli.git
       - name: create catalog
         run: datacontract catalog --output _site/
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
         
         
       # - name: Configure GitHub Pages
@@ -27,8 +31,9 @@ jobs:
       #     target: gh-pages
           
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
+          path: _/site/
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
