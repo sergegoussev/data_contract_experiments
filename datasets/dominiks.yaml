@@ -22,9 +22,9 @@ info:
 
 ### terms
 
-#terms:
-#  usage:
-#  limitations:
+terms:
+ usage: 'Dataset can be used for research and training purposes'
+ limitations: 'Dataset must not be republished'
 #  billing:
 #  noticePeriod:
 
