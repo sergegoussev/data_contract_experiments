@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install datacontract-cli
+          pip install git+ssh://git@github.com:sergegoussev/datacontract-cli.git
       - run: echo "Upgraded pip and installed from GitHub"
       - name: create catalog
         run: datacontract catalog --output _site/
@@ -40,7 +40,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "This job's status is ${{ job.status }}."
       # - run: actions/upload-pages-artifact
       
       
